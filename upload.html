@@ -1,0 +1,18 @@
+<input type="file" accept="image/*" id="upload" style="display:none;" onchange="displayImage(this)">
+<button onclick="document.getElementById('upload').click();">Tải Ảnh Lên</button>
+<img id="uploadedImage" style="display:none; max-width: 100%; margin-top: 10px;">
+
+<script>
+  function displayImage(input) {
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById('uploadedImage');
+        img.src = e.target.result;
+        img.style.display = 'block';
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
